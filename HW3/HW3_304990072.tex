@@ -1,0 +1,143 @@
+*\documentclass{article}
+\author{Zixuan Lu \\ 304990072}
+\title{\textbf{Homework 2}}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage[margin=1 in]{geometry}
+\begin{document}
+\maketitle
+\paragraph{Problem 1}
+\subparagraph*{(a)} 
+\begin{equation}\nonumber
+\begin{split}
+L_1(x)&=\frac{(x-2)(x-3)}{(1-2)(1-3)} = \frac{x^2-5x+6}{2} \\
+L_2(x)&=\frac{(x-1)(x-3)}{(2-1)(2-3)} = -x^2+4x-3 \\
+L_3(x)&=\frac{(x-1)(x-2)}{(3-1)(3-2)} = \frac{x^2-3x+2}{2} \\
+P(x)&=\frac{x^2-5x+6}{2}-\frac{x^2-4x+3}{2}+\frac{x^2-3x+2}{6} = \frac{x^2-6x+11}{6}
+\end{split}
+\end{equation}
+\subparagraph*{(b)} 
+\begin{equation}\nonumber
+\begin{split}
+P_{0,1} &= \frac{1}{x_1-x_0}[(x-x_0)P_1-(x-x_1)P_0] = \frac{1}{2-1}[(x-1)\cdot\frac{1}{2}-(x-2)\cdot1] = -\frac{x-3}{2} \\
+P_{1,2} &= \frac{1}{x_2-x_1}[(x-x_1)P_2-(x-x_2)P_1] = \frac{1}{3-2}[(x-2)\cdot\frac{1}{3}-(x-3)\cdot\frac{1}{2}] = -\frac{x-5}{6} \\
+P_{0,1,2} &= \frac{1}{x_2-x_0}[(x-x_0)P_{1,2}-(x-x_2)P_{0,1}]= \frac{1}{3-1}[(x-1)\cdot(-\frac{x-5}{6})-(x-3)\cdot( -\frac{x-3}{2})] = \frac{x^2-6x+11}{6}
+\end{split}
+\end{equation}
+\subparagraph*{(c)}
+\begin{equation}\nonumber
+\begin{split}
+f[0,1] &= \frac{\frac{1}{2}-1}{2-1} = -\frac{1}{2} \\
+f[1,2] &= \frac{\frac{1}{3}-\frac{1}{2}}{3-2} = -\frac{1}{6} \\
+f[0,1,2] &= \frac{-\frac{1}{6}+\frac{1}{2}}{3-1} = \frac{1}{6} \\
+P(x) &= 1 - \frac{1}{2}(x-1) + \frac{1}{6}(x-1)(x-2) \\
+&= \frac{x^2-6x+11}{6}
+\end{split}
+\end{equation}
+
+\newpage
+
+\paragraph{Problem 2}
+\subparagraph{} We need to determine $a_0, a_1, b_0, b_1, c_0, c_1, d_1, d_2$. From the definition of natural cubic spline , we have:
+\begin{equation}\nonumber
+\begin{split}
+a_0 &= f(-1) = 1 \\
+a_1 &= f(0) = 1 = a_0 + b_0 + c_0 + d_0 \\
+f(1) &= 2 = a_1 + b_1 + c_1 + d_1 \\
+b_0+2c_0+3d_0 &= b_1\ (S_0^{\rq}(0)=S_1^{\rq}(0))\\
+2c_0+6d_0 &= 2c_1\ (S_0^{(2)}(0)=S_1^{(2)}(0))\\ 
+2c_0 &= 0\ (S_0^{(2)}(-1) = 0) \\
+2c_1+6d_1 &= 0\ (S_0^{(2)}(1) = 0)
+\end{split}
+\end{equation}
+Solving the system, we have: \\
+$S(x)=
+\begin{cases}
+               1 - \frac{1}{4}(x+1) + \frac{1}{4}(x+1)^3 \\
+               1 + \frac{1}{2}x + \frac{3}{4}x^2 - \frac{1}{4}x^3 \\
+\end{cases}$\\~\\~\\
+
+\newpage
+
+\paragraph{Problem 3}
+\subparagraph{}
+First, for $H(x_i)$: \\
+$H_{n,j}(x_i)= 
+\begin{cases}
+               0 \textbf{ for } i\neq j\textbf{ since } L_{n,j}(x_i) = 0 \textbf{ for } i\neq j\\
+               [1-0]L_{n,i}^2(x_i)= 1 \textbf{ for } i= j\textbf{ since } L_{n,i}(x_i) = 1\\
+\end{cases}$\\~\\~\\\
+$\widehat{H}_{n,j}(x_i)= 
+\begin{cases}
+               0 \textbf{ for } i\neq j\textbf{ since } L_{n,j}(x_i) = 0 \textbf{ for } i\neq j\\
+               0\cdot L_{n,i}^2(x_i)= 0 \textbf{ for } i= j \\
+\end{cases}$\\~\\~\\\
+Thus, $$H(x_i) = \sum_{j=0, j\neq i}^{n}0 + 1\cdot f(x_i) + \sum_{j=0}^{n} 0 = f(x_i)$$
+\subparagraph{}
+Then, for $H^{\rq}(x_i)$: \\
+$H_{n,j}^{\rq}(x_i)= 
+\begin{cases}
+               0 \textbf{ for } i\neq j\textbf{ since } L_{n,j}(x_i) = 0 \textbf{ for } i\neq j\\
+               -2L_{n,i}^{\rq}(x_i)L_{n,i}^{2}(x_i)+[1-(x_i-x_i)L_{n,i}^{\rq}(x_i)]2L_{n,i}^{\rq}(x_i)L_{n,i}(x_i)= -2L_{n,i}^{\rq}(x_i)  + L_{n,i}^{\rq}(x_i)=0  \\
+               \textbf{ for } i= j\textbf{ since } L_{n,i}(x_i) = 1\\
+\end{cases}$\\~\\~\\\
+$\widehat{H}_{n,j}^{\rq}(x_i)= L_{n,j}^{2}(x_i)[L_{n,i}^{2}(x_i)+2(x_i-x_j)L_{n,i}^{\rq}(x_i)] =
+\begin{cases}
+               0 \textbf{ for } i\neq j\textbf{ since } L_{n,j}(x_i) = 0 \textbf{ for } i\neq j\\
+               1\cdot [1+0]= 1 \textbf{ for } i= j \\
+\end{cases}$\\~\\~\\\
+Thus, $$H(x) = \sum_{j=0, j\neq i}^{n}0 + 1\cdot f(x_i) + \sum_{j=0}^{n} 0 + \sum_{j=0, j\neq i}^{n}0 + 1\cdot f^{\rq}(x_i) + \sum_{j=0}^{n} 0= f(x_i) +f^{\rq}(x_i)$$ (proven)
+
+\newpage
+\paragraph{Problem 4}
+\subparagraph{(a)}
+\begin{equation}\nonumber
+\begin{split}
+L_1(x)&=\frac{(x-x_0)(x-x_0-h)}{(-h)(-2h)} = \frac{x^2-(2x_0+h)x+x_0^2+x_0h}{2h^2} \\
+L_2(x)&=\frac{(x-x_0+h)(x-x_0-h)}{(h)(-h)} = \frac{x^2-2x_0x+x_0^2-h^2}{-h^2} \\
+L_3(x)&=\frac{(x-x_0+h)(x-x_0)}{(2h)(h)} = \frac{x^2-(2x_0-h)x+x_0^2-x_0h}{2h^2} \\
+P(x)&=\frac{x^2-(2x_0+h)x+x_0^2+x_0h}{2h^2}f(x_0-h)-\frac{x^2-2x_0x+x_0^2-h^2}{h^2}f(x_0)+\frac{x^2-(2x_0-h)x+x_0^2-x_0h}{2h^2}f(x_0+h)
+\end{split}
+\end{equation}
+
+\subparagraph{(b)}
+$$E(x)=\frac{f^{(3)}(\xi(x))}{3!}\prod_{i=0}^{2} (x-x_i)$$
+
+\subparagraph{(c)}
+\begin{equation}\nonumber
+\begin{split}
+f^{\rq}(x)&=\frac{2x-2x_0-h}{2h^2}f(x_0-h)-\frac{2x-2x_0}{h^2}f(x_0) + \frac{2x-2x_0+h}{2h^2}f(x_0+h)\\&+D_x[\frac{\prod_{i=0}^{2} (x-x_i)}{3!}]f^{(3)}(\xi(x))+\frac{\prod_{i=0}^{2} (x-x_i)}{3!}D_x[f^{(3)}(\xi(x))]\\
+f^{\rq}(x_0)&=\frac{-h}{2h^2}f(x_0-h)-0+\frac{h}{2h^2}f(x_0+h)-\frac{f^{(3)}(\xi(x))}{3!}h^2 \\
+&= \frac{1}{2h}[f(x_0+h)-f(x_0-h)]-\frac{f^{(3)}(\xi(x))}{6}h^2
+\end{split}
+\end{equation}
+
+\subparagraph{(d)}
+Yes. This is because the third derivative of the error term will be zero if $f$ is a polynomial of degree less than or equal to 2. This makes $f^{\rq}(x)=P^{\rq}(x)$.
+
+\subparagraph{(e)}
+Assume the round-off errors $e(x_0\pm h)$ are bounded by some constant $\varepsilon>0$, the third derivative of $f$ is bounded by a number $M>0$, then:
+$$|f^{\rq}(x_0)-P^{\rq}(x_0)| \leq \frac{\varepsilon}{h}+\frac{h^2}{M}$$
+\end{document} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

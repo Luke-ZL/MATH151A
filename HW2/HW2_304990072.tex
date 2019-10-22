@@ -1,0 +1,78 @@
+\documentclass{article}
+\author{Zixuan Lu \\ 304990072}
+\title{\textbf{Homework 4}}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage[margin=1 in]{geometry}
+\begin{document}
+\maketitle
+\paragraph{Problem 1}
+\subparagraph*{(a)} 
+\begin{equation}\nonumber
+\begin{split}
+\lim_{n\to\infty}\frac{|\frac{1}{2}\ln{(p_n+1)}-0|}{|p_n-0|} &=\lim_{n\to\infty}\frac{|\frac{1}{2}\ln{(p_n+1)}|}{|p_n|} \\
+&= \lim_{n\to\infty}\frac{\frac{1}{2}\ln{(p_n+1)}}{p_n} \textbf{ Since } P_0  = 1 \\
+&=\lim_{p_n\to 0}\frac{\frac{1}{2}\ln{(p_n+1)}}{p_n} \textbf{ Since } p^* = 0 \\
+&=\lim_{p_n\to 0}\frac{\dv{}{p_n}[\frac{1}{2}\ln{(p_n+1)}]}{\dv{}{p_n}p_n} \textbf{ Since the limit has the form of } \frac{0}{0} \\
+&=\lim_{p_n\to 0}\frac{\frac{1}{2}\frac{1}{p_n+1}}{1} \\
+&=\lim_{p_n\to 0}\frac{1}{2p_n+2} \\
+&=\frac{1}{2} < 1
+\end{split}
+\end{equation}
+Hence, the sequence is linearly convergent.
+\subparagraph*{(b)}
+\begin{equation}\nonumber
+\begin{split}
+\lim_{n\to\infty}\frac{|1+2^{1-(n+1)}+\frac{1}{(n+1+2)^{n+1}}-1|}{|1+2^{1-n}+\frac{1}{(n+2)^n}-1|} &= \lim_{n\to\infty}\frac{|2^{-n}+\frac{1}{(n+3)^{n+1}}|}{|2^{1-n}+\frac{1}{(n+2)^n}|} \\
+&=\lim_{n\to\infty}\frac{2^{-n}+\frac{1}{(n+3)^{n+1}}}{2^{1-n}+\frac{1}{(n+2)^n}} < \lim_{n\to\infty}\frac{2^{-n}+\frac{1}{(n+3)^{n+1}}}{2^{-n}+\frac{1}{(n+3)^{n+1}}} = 1\\
+& \textbf{because } 2^{-n} < 2^{1-n},\ \frac{1}{(n+3)^{n+1}} < \frac{1}{(n+2)^n} \\
+& \textbf{Also, } \lim_{n\to\infty}\frac{2^{-n}+\frac{1}{(n+3)^{n+1}}}{2^{1-n}+\frac{1}{(n+2)^n}} > \lim_{n\to\infty}\frac{2^{-n}+\frac{1}{(n+3)^{n+1}}}{2^{1-n}+\frac{2}{(n+3)^{n+1}}} = \frac{1}{2} \\
+& \textbf{because } \frac{1}{(n+2)^n} \geq \frac{2}{(n+3)^{n+1}} \\
+& \textbf{as } \frac{1}{(n+2)^n} - \frac{2}{(n+3)^{n+1}} = \frac{(n+3)^{n+1}-2(n+2)^n}{(n+2)^n(n+3)^{n+1}} > 0 
+\end{split}
+\end{equation}
+Hence, the sequence is linearly convergent since $$\frac{1}{2} < \lim_{n\to\infty}\frac{|p_{n+1}-p^*|}{|p_n-p^*|} < 1$$ 
+\newpage
+\paragraph{Problem 2}
+\begin{equation}\nonumber
+\begin{split}
+\lim_{n\to\infty}p_n &= \lim_{n\to\infty}10^{(-2^n)} \\
+&= 10^{-\infty} \\
+&= 0 \\~\\
+\lim_{n\to\infty}\frac{|p_{n+1} - p^*|}{|p_n-p^*|^2} &=  \lim_{n\to\infty}\frac{|10^{(-2^{n+1})}|}{|10^{(-2^n)}|^2} \\
+&= \lim_{n\to\infty}\frac{10^{(-2^{n+1})}}{10^{(-2^{n+1})}} \\
+&= 1 > 0;
+\end{split}
+\end{equation}
+Hence, the sequence is quadratically convergent.
+
+\newpage
+\paragraph{Problem 3}
+\subparagraph*{(a)}
+\begin{equation}\nonumber
+\begin{split}
+L_1(x)&=\frac{(x-2)(x-3)(x-4)}{(1-2)(1-3)(1-4)} = -\frac{x^3-9x^2+26x-24}{6} \\
+L_2(x)&=\frac{(x-1)(x-3)(x-4)}{(2-1)(2-3)(2-4)} = \frac{x^3-8x^2+19x-12}{2} \\
+L_3(x)&=\frac{(x-1)(x-2)(x-4)}{(3-1)(3-2)(3-4)} = -\frac{x^3-7x^2+14x-8}{2} \\
+L_4(x)&=\frac{(x-1)(x-2)(x-3)}{(4-1)(4-2)(4-3)} = \frac{x^3-6x^2+11x-6}{6} \\
+f &= P(x) = \sum_{k=0}^{3} f(x_k)L_k(x) \\
+&= -\frac{x^3-9x^2+26x-24}{3} + \frac{x^3-8x^2+19x-12}{2} -2(x^3-7x^2+14x-8)+\frac{x^3-6x^2+11x-6}{2} \\
+&= -\frac{4}{3}x^3+10x^2-\frac{65}{3}x+15
+\end{split}
+\end{equation}
+\subparagraph*{(b)}
+\begin{equation}\nonumber
+\begin{split}
+P_{0,1} &= \frac{1}{x_1-x_0}[(x-x_0)P_1-(x-x_1)P_0] = \frac{1}{2-1}[(x-1)\cdot1-(x-2)\cdot2] = 3-x \\
+P_{1,2} &= \frac{1}{x_2-x_1}[(x-x_1)P_2-(x-x_2)P_1] = \frac{1}{3-2}[(x-2)\cdot4-(x-3)\cdot1] = 3x-5 \\
+P_{2,3} &= \frac{1}{x_3-x_2}[(x-x_2)P_3-(x-x_3)P_2] = \frac{1}{4-3}[(x-3)\cdot3-(x-4)\cdot4] = 7-x \\
+P_{0,1,2} &= \frac{1}{x_2-x_0}[(x-x_0)P_{1,2}-(x-x_2)P_{0,1}]= \frac{1}{3-1}[(x-1)\cdot(3x-5)-(x-3)\cdot(3-x)] = 2x^2-7x+7 \\
+P_{1,2,3} &= \frac{1}{x_3-x_1}[(x-x_1)P_{2,3}-(x-x_3)P_{1,2}]= \frac{1}{4-2}[(x-2)\cdot(7-x)-(x-4)\cdot(3x-5)] = -2x^2+13x-17 \\
+P_{1,2,3,4} &= \frac{1}{x_3-x_0}[(x-x_0)P_{1,2,3}-(x-x_3)P_{0,1,2}] \\
+&= \frac{1}{4-1}[(x-1)\cdot(-2x^2+13x-17)-(x-4)\cdot(2x^2-7x+7)] \\
+&= -\frac{4}{3}x^3+10x^2-\frac{65}{3}x+15 = f
+\end{split}
+\end{equation}
+Hence, we get the same polynomial $f$ as the result of Lagrange interpolation method.
+\end{document} 

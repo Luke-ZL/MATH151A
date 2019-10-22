@@ -1,0 +1,82 @@
+\documentclass{article}
+\author{Zixuan Lu \\ 304990072}
+\title{\textbf{Homework 4}}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage[margin=1 in]{geometry}
+\begin{document}
+\maketitle
+\paragraph{Problem 1}
+\subparagraph*{(a)} 
+\begin{equation}\nonumber
+\begin{split}
+L_1(x)&=\frac{(x-0)(x-1)}{(-1-0)(-1-1)} = \frac{x^2-x}{2} \\
+L_2(x)&=\frac{[x-(-1)](x-1)}{[0-(-1)](0-1)} = 1-x^2 \\
+L_3(x)&=\frac{[x-(-1)](x-0)}{[1-(-1)](1-0)} = \frac{x^2+x}{2} \\
+h(x) &= P(x) = \sum_{k=0}^{3} f(x_k)L_k(x) \\
+&= \frac{x^2-x}{2}f(-1) + (1-x^2)f(0) + \frac{x^2+x}{2}f(1)
+\end{split}
+\end{equation}
+
+\subparagraph*{(b)}
+$$E(x)=\frac{f^{(3)}(\xi(x))}{3!}\prod_{i=0}^{2} (x-x_i)$$ 
+
+\subparagraph*{(c)}
+\begin{equation}\nonumber
+\begin{split}
+\int_{-1}^{1} h(x)\ dx &= \int_{-1}^{1} \frac{x^2-x}{2}f(-1) + (1-x^2)f(0) + \frac{x^2+x}{2}f(1)\ dx \\
+&= \frac{1}{2}\int_{-1}^{1} (x^2-x)f(-1) + (2 - 2x^2)f(0) + (x^2 + x)f(1)\ dx \\
+&= \frac{1}{2}f(-1)\int_{-1}^{1} x^2-x\ dx + f(0)\int_{-1}^{1}1-x^2\ dx + \frac{1}{2}f(1)\int_{-1}^{1} x^2+x\ dx \\
+&= \frac{1}{2}f(-1)[\frac{x^3}{3}-\frac{x^2}{2}]_{-1}^1 + f(0)[x-\frac{x^3}{3}]_{-1}^1 + \frac{1}{2}f(1)[\frac{x^3}{3}+\frac{x^2}{2}]_{-1}^1\\
+&= \frac{1}{3}f(-1) + \frac{4}{3}f(0) + \frac{1}{3}f(1)
+\end{split}
+\end{equation}
+
+\subparagraph*{(d)}
+Yes. This is because when $f$ is a polynomial of degree less than or equal to 2, the error term stated in part (b) is $0$ as $f^{(3)}(\xi(x))$ is 0. This makes $\int_{-1}^{1} h(x)\ dx = \int_{-1}^{1} f(x)\ dx$.
+
+\subparagraph*{(e)}
+\begin{equation}\nonumber
+\begin{split}
+|\int_{-1}^{1} f(x)\ dx - \int_{-1}^{1} h(x)\ dx| &\leq \frac{1}{6} \int_{-1}^{1} (x-x_0)(x-x_1)(x-x_2)f^{(3)}(\xi(x))\ dx 
+\end{split}
+\end{equation} 
+\newpage
+\paragraph{Problem 2}
+\subparagraph*{(a)} 
+\begin{equation}\nonumber
+\begin{split}
+\int_{0}^{4} f(x)\ dx &= \frac{h}{3}[f(x_0)+4f(x_1)+f(x_2)]-\frac{h^5}{90}f^{(4)}(\xi)  \\
+&\approx \frac{2}{3}[f(0)+4f(2)+f(4)] \\
+&= \frac{2}{3}[1+4+1] \\
+&= 4
+\end{split}
+\end{equation}
+
+\subparagraph*{(b)}
+\begin{equation}\nonumber
+\begin{split}
+\int_{1}^{4} f(x)\ dx &= \frac{h}{3}[f(a)+2\sum_{j=1}^{(n/2)-1}f(x_{2j}) +4\sum_{j=1}^{(n/2)}f(x_{2j-1})+f(b)]-\frac{b-a}{180}h^4f^{(4)}(\mu) \\
+&\approx \frac{1}{3} [f(0)+2f(2)+4(f(1)+f(3))+f(4)] \\
+&=\frac{1}{3}[1+2*1+4*(2+2)+1] \\
+&= \frac{20}{3}
+\end{split}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document} 
